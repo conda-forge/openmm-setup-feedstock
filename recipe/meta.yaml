@@ -1,13 +1,13 @@
 {% set name = "openmm-setup" %}
-{% set version = "1.4" %}
+{% set version = "1.5" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/openmm/openmm-setup/archive/v{{ version }}.tar.gz
-  sha256: edb107f97c0ba07410e691175c99b59a99dcd7cf81356e114c080ba1aaee627c
+  git_url: https://github.com/openmm/{{ name }}.git
+  git_rev: "290ee19"
 
 build:
   noarch: python
@@ -23,7 +23,7 @@ requirements:
   run:
     - python >=3.6
     - flask
-    - openmm >=7.5
+    - openmm >=8.1
     - pdbfixer >=1.5
 
 test:
