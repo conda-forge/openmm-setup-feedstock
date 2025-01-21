@@ -11,22 +11,24 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --no-deps
   entry_points:
     - openmm-setup = openmmsetup.openmmsetup:main
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - flask
     - openmm >=8.1
     - pdbfixer >=1.5
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - openmmsetup
 
